@@ -48,3 +48,16 @@ void factorial(int n) {
 
     printf("\n");
 }
+//the idea is as follows :
+//First, every number is written inversely. example 24 is 42
+//second, every product is done this way example:
+//carry = 0
+// 42 *
+// 5
+//-------------------------------------
+// (4*5 + carry )  (5*2)+carry) 
+// and write them in array[*result_size] and update result_size whenever we have the last carry
+//Also result_size controls how many numbers are going to be multiplied.  
+
+
+
