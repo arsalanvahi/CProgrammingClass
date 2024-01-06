@@ -187,3 +187,14 @@ int evaluatePolynomial(Polynomial* poly, int x) {
     return result;
 }
 //*****************************************************************************
+// Create terms for the polynomial 3x^2 + 2x + 1
+Term* term1 = createTerm(3, 2);  // 3x^2
+Term* term2 = createTerm(2, 1);  // 2x
+Term* term3 = createTerm(1, 0);  // 1
+
+// Create a polynomial and link the terms
+Polynomial* poly = initializePolynomial();
+poly->head = term1;
+term1->next = term2;
+term2->next = term3;
+term3->next = NULL;
