@@ -198,3 +198,5 @@ poly->head = term1;
 term1->next = term2;
 term2->next = term3;
 term3->next = NULL;
+//*************************
+//This linked list structure makes it easy to manipulate and perform operations on polynomials by iterating through their terms. The addTerm function, for example, adds a new term to the end of the polynomial by traversing the linked list. The addPolynomials and multiplyPolynomials functions operate on the linked lists of terms to perform addition and multiplication of polynomials, respectively.
