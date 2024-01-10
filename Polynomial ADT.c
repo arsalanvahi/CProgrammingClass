@@ -4,7 +4,7 @@
 typedef struct Term {
     int coefficient;
     int exponent;
-    struct Term* next; // Pointer to the next term in the polynomial
+    struct Term* next; // Pointer to the next term in the polynomial, Use this to link between Terms and make a linked list of Terms and build a polynomial
 } Term;
 
 // Polynomial structure
