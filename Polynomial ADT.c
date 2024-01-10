@@ -40,7 +40,7 @@ void freePolynomial(Polynomial* poly);
 //***********************************************************************************
 #include <stdlib.h>
 
-Polynomial* initializePolynomial() {
+Polynomial* initializePolynomial() {   //Its job is to initialize the head to the first Term and not else. 
     // Allocate memory for a new Polynomial structure
     Polynomial* newPoly = (Polynomial*)malloc(sizeof(Polynomial));
 
