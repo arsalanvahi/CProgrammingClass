@@ -39,7 +39,7 @@ void push(Stack* stack, int data) {
         printf("Stack overflow\n");
         return;
     }
-    stack->array[++stack->top].data = data;
+    stack->array[++stack->top].data = data;    //because the array is a type of stackelement, accessing an element of this, needs to use . to access data
 }
 
 // Function to pop an element from the stack
