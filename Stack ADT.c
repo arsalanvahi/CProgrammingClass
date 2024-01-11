@@ -48,7 +48,7 @@ int pop(Stack* stack) {
         printf("Stack underflow\n");
         return -1; // Return an error value (assuming -1 is not a valid element)
     }
-    return stack->array[stack->top--].data;
+    return stack->array[stack->top--].data;  //this means that on the array of stack, on the address of stack->top we find the data and return it , then we decrease the stack-> data 
 }
 
 // Function to peek at the top element of the stack
