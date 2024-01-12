@@ -145,38 +145,38 @@ typedef struct QueueElement {
     struct QueueElement* next;
 } QueueElement;
 
-// QueueNode structure
+// Queue structure
 typedef struct {
     QueueElement* front; // Pointer to the front of the queue
     QueueElement* rear;  // Pointer to the rear of the queue
     size_t size;         // Number of elements in the queue
-} QueueNode;
+} Queue;
 
 // Function to initialize an empty queue
-QueueNode* initializeQueue();
+Queue* initializeQueue();
 
 // Function to check if the queue is empty
-int isQueueEmpty(QueueNode* queue);
+int isQueueEmpty(Queue* queue);
 
 // Function to enqueue an element to the back of the queue
-void enqueue(QueueNode* queue, int data);
+void enqueue(Queue* queue, int data);
 
 // Function to dequeue an element from the front of the queue
-int dequeue(QueueNode* queue);
+int dequeue(Queue* queue);
 
 // Function to get the size of the queue
-size_t getQueueSize(QueueNode* queue);
+size_t getQueueSize(Queue* queue);
 
 // Function to free the memory allocated for the queue
-void freeQueue(QueueNode* queue);
+void freeQueue(Queue* queue);
 
 // Function to display the elements of the queue (optional)
-void displayQueue(QueueNode* queue);
+void displayQueue(Queue* queue);
 
 // Implementation of the functions
 
-QueueNode* initializeQueue() {
-    QueueNode* newQueue = (QueueNode*)malloc(sizeof(QueueNode));
+Queue* initializeQueue() {
+    Queue* newQueue = (Queue*)malloc(sizeof(Queue));
     if (newQueue == NULL) {
         // Handle memory allocation failure
         return NULL;
@@ -186,11 +186,11 @@ QueueNode* initializeQueue() {
     return newQueue;
 }
 
-int isQueueEmpty(QueueNode* queue) {
+int isQueueEmpty(Queue* queue) {
     return (queue == NULL || queue->size == 0);
 }
 
-void enqueue(QueueNode* queue, int data) {
+void enqueue(Queue* queue, int data) {
     QueueElement* newElement = (QueueElement*)malloc(sizeof(QueueElement));
     if (newElement == NULL) {
         // Handle memory allocation failure
@@ -209,7 +209,7 @@ void enqueue(QueueNode* queue, int data) {
     queue->size++;
 }
 
-int dequeue(QueueNode* queue) {
+int dequeue(Queue* queue) {
     if (isQueueEmpty(queue)) {
         // Handle underflow (empty queue)
         return -1; // Assuming -1 is not a valid element in the queue
@@ -231,18 +231,18 @@ int dequeue(QueueNode* queue) {
     return data;
 }
 
-size_t getQueueSize(QueueNode* queue) {
+size_t getQueueSize(Queue* queue) {
     return (queue == NULL) ? 0 : queue->size;
 }
 
-void freeQueue(QueueNode* queue) {
+void freeQueue(Queue* queue) {
     while (!isQueueEmpty(queue)) {
         dequeue(queue);
     }
     free(queue);
 }
 
-void displayQueue(QueueNode* queue) {
+void displayQueue(Queue* queue) {
     if (isQueueEmpty(queue)) {
         printf("Queue is empty.\n");
         return;
@@ -255,4 +255,3 @@ void displayQueue(QueueNode* queue) {
     }
     printf("\n");
 }
-//You can also use node instead of stackElement
