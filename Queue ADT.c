@@ -20,7 +20,7 @@ int isQueueEmpty(Queue* queue);
 // Function to check if the queue is full
 int isQueueFull(Queue* queue);
 
-// Function to enqueue an element to the back of the queue
+// Function to enqueue an element to the back of the queue  (adding an element at back of the queue)
 void enqueue(Queue* queue, int data);
 
 // Function to dequeue an element from the front of the queue
