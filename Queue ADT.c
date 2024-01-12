@@ -139,44 +139,44 @@ int main() {
 //********************************************************************** linked list ***********************
 #include <stdlib.h>
 
-// Node structure to represent elements in the queue
-typedef struct Node {
+// QueueElement structure to represent elements in the queue
+typedef struct QueueElement {
     int data;
-    struct Node* next;
-} Node;
+    struct QueueElement* next;
+} QueueElement;
 
-// Queue structure
+// QueueNode structure
 typedef struct {
-    Node* front; // Pointer to the front of the queue
-    Node* rear;  // Pointer to the rear of the queue
-    size_t size; // Number of elements in the queue
-} Queue;
+    QueueElement* front; // Pointer to the front of the queue
+    QueueElement* rear;  // Pointer to the rear of the queue
+    size_t size;         // Number of elements in the queue
+} QueueNode;
 
 // Function to initialize an empty queue
-Queue* initializeQueue();
+QueueNode* initializeQueue();
 
 // Function to check if the queue is empty
-int isQueueEmpty(Queue* queue);
+int isQueueEmpty(QueueNode* queue);
 
 // Function to enqueue an element to the back of the queue
-void enqueue(Queue* queue, int data);
+void enqueue(QueueNode* queue, int data);
 
 // Function to dequeue an element from the front of the queue
-int dequeue(Queue* queue);
+int dequeue(QueueNode* queue);
 
 // Function to get the size of the queue
-size_t getQueueSize(Queue* queue);
+size_t getQueueSize(QueueNode* queue);
 
 // Function to free the memory allocated for the queue
-void freeQueue(Queue* queue);
+void freeQueue(QueueNode* queue);
 
 // Function to display the elements of the queue (optional)
-void displayQueue(Queue* queue);
+void displayQueue(QueueNode* queue);
 
 // Implementation of the functions
 
-Queue* initializeQueue() {
-    Queue* newQueue = (Queue*)malloc(sizeof(Queue));
+QueueNode* initializeQueue() {
+    QueueNode* newQueue = (QueueNode*)malloc(sizeof(QueueNode));
     if (newQueue == NULL) {
         // Handle memory allocation failure
         return NULL;
@@ -186,72 +186,73 @@ Queue* initializeQueue() {
     return newQueue;
 }
 
-int isQueueEmpty(Queue* queue) {
+int isQueueEmpty(QueueNode* queue) {
     return (queue == NULL || queue->size == 0);
 }
 
-void enqueue(Queue* queue, int data) {
-    Node* newNode = (Node*)malloc(sizeof(Node));
-    if (newNode == NULL) {
+void enqueue(QueueNode* queue, int data) {
+    QueueElement* newElement = (QueueElement*)malloc(sizeof(QueueElement));
+    if (newElement == NULL) {
         // Handle memory allocation failure
         return;
     }
-    newNode->data = data;
-    newNode->next = NULL;
+    newElement->data = data;
+    newElement->next = NULL;
 
     if (isQueueEmpty(queue)) {
-        queue->front = queue->rear = newNode;
+        queue->front = queue->rear = newElement;
     } else {
-        queue->rear->next = newNode;
-        queue->rear = newNode;
+        queue->rear->next = newElement;
+        queue->rear = newElement;
     }
 
     queue->size++;
 }
 
-int dequeue(Queue* queue) {
+int dequeue(QueueNode* queue) {
     if (isQueueEmpty(queue)) {
         // Handle underflow (empty queue)
         return -1; // Assuming -1 is not a valid element in the queue
     }
 
-    Node* frontNode = queue->front;
-    int data = frontNode->data;
+    QueueElement* frontElement = queue->front;
+    int data = frontElement->data;
 
     if (queue->front == queue->rear) {
         // The queue has only one element
         queue->front = queue->rear = NULL;
     } else {
-        queue->front = frontNode->next;
+        queue->front = frontElement->next;
     }
 
-    free(frontNode);
+    free(frontElement);
     queue->size--;
 
     return data;
 }
 
-size_t getQueueSize(Queue* queue) {
+size_t getQueueSize(QueueNode* queue) {
     return (queue == NULL) ? 0 : queue->size;
 }
 
-void freeQueue(Queue* queue) {
+void freeQueue(QueueNode* queue) {
     while (!isQueueEmpty(queue)) {
         dequeue(queue);
     }
     free(queue);
 }
 
-void displayQueue(Queue* queue) {
+void displayQueue(QueueNode* queue) {
     if (isQueueEmpty(queue)) {
         printf("Queue is empty.\n");
         return;
     }
 
-    Node* current = queue->front;
+    QueueElement* current = queue->front;
     while (current != NULL) {
         printf("%d ", current->data);
         current = current->next;
     }
     printf("\n");
 }
+//You can also use node instead of stackElement
