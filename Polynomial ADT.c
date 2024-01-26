@@ -1,4 +1,4 @@
-// Polynomial ADT
+//*************************** 1. Define ADT ********************************
 
 // Node structure to represent a term in the polynomial
 typedef struct Term {
@@ -11,8 +11,8 @@ typedef struct Term {
 typedef struct Polynomial {
     Term* head; // Pointer to the first term in the polynomial
 } Polynomial;
-
-// Function to create a new term with the given coefficient and exponent
+//******************* 2. Define Operations **********************************************
+// Function prototypes to create a new term with the given coefficient and exponent
 Term* createTerm(int coefficient, int exponent);
 
 // Function to initialize an empty polynomial
@@ -37,7 +37,7 @@ void displayPolynomial(Polynomial* poly);
 void freePolynomial(Polynomial* poly);
 
 // Additional functions can be added based on the specific requirements of your application
-//***********************************************************************************
+//************************************3. Operations Implementations ***********************************************k
 #include <stdlib.h>
 
 Polynomial* initializePolynomial() {   //Its job is to initialize the head to the first Term and not else. 
@@ -61,7 +61,6 @@ Polynomial* initializePolynomial() {   //Its job is to initialize the head to th
 Term* createTerm(int coefficient, int exponent) {
     // Allocate memory for a new Term structure
     Term* newTerm = (Term*)malloc(sizeof(Term));
-//************************************************************************
 
 
     // Check if memory allocation was successful
@@ -78,7 +77,6 @@ Term* createTerm(int coefficient, int exponent) {
     return newTerm;
 }
 
-//*****************************************************************************
 #include <stdlib.h>
 
 void addTerm(Polynomial* poly, int coefficient, int exponent) {
@@ -106,7 +104,7 @@ void addTerm(Polynomial* poly, int coefficient, int exponent) {
     }
 }
 
-//******************************************************************
+
 #include <stdlib.h>
 
 Polynomial* addPolynomials(Polynomial* poly1, Polynomial* poly2) {
@@ -138,7 +136,7 @@ Polynomial* addPolynomials(Polynomial* poly1, Polynomial* poly2) {
 
     return sumPoly;
 }
-//*********************************************************************************************
+
 #include <stdlib.h>
 
 Polynomial* multiplyPolynomials(Polynomial* poly1, Polynomial* poly2) {
@@ -169,7 +167,7 @@ Polynomial* multiplyPolynomials(Polynomial* poly1, Polynomial* poly2) {
 
     return productPoly;
 }
-//*************************************************************************************************
+
 int evaluatePolynomial(Polynomial* poly, int x) {
     int result = 0;
 
@@ -186,7 +184,7 @@ int evaluatePolynomial(Polynomial* poly, int x) {
 
     return result;
 }
-//*****************************************************************************
+//***************************4. Client-side implementations **************************************************
 // Create terms for the polynomial 3x^2 + 2x + 1
 Term* term1 = createTerm(3, 2);  // 3x^2
 Term* term2 = createTerm(2, 1);  // 2x
