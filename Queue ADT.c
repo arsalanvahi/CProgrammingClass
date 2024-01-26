@@ -10,7 +10,7 @@ typedef struct {
     int rear;
     size_t size;
 } Queue;
-
+//***************2.operations ***********************************
 // Function to initialize an empty queue
 Queue* initializeQueue();
 
@@ -136,9 +136,9 @@ int main() {
 }
 
 
-//********************************************************************** linked list ***********************
-#include <stdlib.h>
+//**********************************************************************ADT with linked list ***********************
 
+//***********************1. ADT definition*******************************************
 // QueueElement structure to represent elements in the queue
 typedef struct QueueElement {
     int data;
@@ -151,7 +151,7 @@ typedef struct {
     QueueElement* rear;  // Pointer to the rear of the queue
     size_t size;         // Number of elements in the queue
 } Queue;
-
+//**************************2. Operations prototype and interfaces ************************************
 // Function to initialize an empty queue
 Queue* initializeQueue();
 
@@ -173,7 +173,7 @@ void freeQueue(Queue* queue);
 // Function to display the elements of the queue (optional)
 void displayQueue(Queue* queue);
 
-// Implementation of the functions
+// ****************************** 3. Operations Implementations ****************************************
 
 Queue* initializeQueue() {
     Queue* newQueue = (Queue*)malloc(sizeof(Queue));
